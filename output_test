@@ -1,0 +1,523 @@
+cargo build --target wasm32-unknown-unknown --release
+substreams run -e eos.firehose.eosnation.io:9001 map_events -s 328661980 -t +1000
+TraceID: 05416922de3377402172acb820787c0f
+{
+  "@module": "map_events",
+  "@block": 328662236,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "e883b9bb74a45145da35bf72867cfa07ba04cfe3de4235d496068a4711583f3d",
+          "timestamp": "2023-08-31T22:02:08Z",
+          "event": "lognewsale",
+          "saleId": "2398108",
+          "seller": "shanmalik42g",
+          "assetIds": ["2199025088283"],
+          "listingPrice": "0.6000 EOS",
+          "settlementSymbol": "4,EOS",
+          "makerMarketplace": "wombatmarket",
+          "collectionName": "chessunivers",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662271,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "8a02137a22c94d765ce3f2f628a49158b33da1ef3b38cd4b6acac5b261672133",
+          "timestamp": "2023-08-31T22:02:25.500Z",
+          "event": "lognewsale",
+          "saleId": "2398109",
+          "seller": "rezaandnandf",
+          "assetIds": ["2199023454479"],
+          "listingPrice": "0.23 USD",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "tastytalenft",
+          "collectionFee": "0.05000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662343,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "c9d8da19e46a074feaa54a147e66afdd490797ac54c423f4a6fb0b91ad04bbb4",
+          "timestamp": "2023-08-31T22:03:01.500Z",
+          "event": "lognewsale",
+          "saleId": "2398110",
+          "seller": "rezaandnandf",
+          "assetIds": ["2199023482897"],
+          "listingPrice": "0.08 USD",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "tastytalenft",
+          "collectionFee": "0.05000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662371,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "72b3ee231a7c8a185a45295ef41016250d765f549afaffdba33beacbb65d126d",
+          "timestamp": "2023-08-31T22:03:15.500Z",
+          "event": "lognewsale",
+          "saleId": "2398111",
+          "seller": "albertottttt",
+          "assetIds": ["2199024435428"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662400,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "89074fcb7b9bb0e1e859639703e71809f2c1c92b4367ed5677efae708f4ba325",
+          "timestamp": "2023-08-31T22:03:30Z",
+          "event": "lognewsale",
+          "saleId": "2398112",
+          "seller": "albertottttt",
+          "assetIds": ["2199024436161"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662427,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "41adedd7ff90d700a6ca6b06b5d5d6412695fd40ff0972c8f489371e8a885cc9",
+          "timestamp": "2023-08-31T22:03:43.500Z",
+          "event": "lognewsale",
+          "saleId": "2398113",
+          "seller": "albertottttt",
+          "assetIds": ["2199024436735"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662449,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "25aa31d2086de39e948cf0792af9722e2df171fbf1b879514d85097d4a9c0769",
+          "timestamp": "2023-08-31T22:03:54.500Z",
+          "event": "lognewsale",
+          "saleId": "2398114",
+          "seller": "albertottttt",
+          "assetIds": ["2199024438535"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662533,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "39d82e56520b611291112b4421de723dbe637660c33c354047eeb12e4a3ebc17",
+          "timestamp": "2023-08-31T22:04:36.500Z",
+          "event": "lognewsale",
+          "saleId": "2398115",
+          "seller": "albertottttt",
+          "assetIds": ["2199024460262"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662562,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "6adce0a02a6091abb5f8d95a112b363abc0bdd1eea9e7b0d7bcdf0291aa4c08c",
+          "timestamp": "2023-08-31T22:04:51Z",
+          "event": "lognewsale",
+          "saleId": "2398116",
+          "seller": "albertottttt",
+          "assetIds": ["2199024460806"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662576,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "0282d1fabcd37b073ebef6040265c6cf28df7e50830e3defc11a47f4b0961d30",
+          "timestamp": "2023-08-31T22:04:58Z",
+          "event": "lognewsale",
+          "saleId": "2398117",
+          "seller": "sweetia.ftw",
+          "assetIds": ["2199024807386"],
+          "listingPrice": "0.0891 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "tastytalenft",
+          "collectionFee": "0.05000000000000000"
+        }
+      },
+      {
+        "lognewsaleitem": {
+          "trxId": "0282d1fabcd37b073ebef6040265c6cf28df7e50830e3defc11a47f4b0961d30",
+          "timestamp": "2023-08-31T22:04:58Z",
+          "event": "lognewsale",
+          "saleId": "2398118",
+          "seller": "sweetia.ftw",
+          "assetIds": ["2199024756699"],
+          "listingPrice": "0.0742 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "tastytalenft",
+          "collectionFee": "0.05000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662589,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "1d4da000054ce79d2e10a118330b5d88e97f112d3efa4dc2835b022c352dba99",
+          "timestamp": "2023-08-31T22:05:04.500Z",
+          "event": "lognewsale",
+          "saleId": "2398119",
+          "seller": "albertottttt",
+          "assetIds": ["2199024464885"],
+          "listingPrice": "0.1680 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662694,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "3e0de757db1d5ba3f631c29802ce88888a7e0d961f95240a911ebfd00515d298",
+          "timestamp": "2023-08-31T22:05:57Z",
+          "event": "lognewsale",
+          "saleId": "2398120",
+          "seller": "marinaaaaaas",
+          "assetIds": ["2199025434274"],
+          "listingPrice": "2.0000 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "knightforest",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662778,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "8e67ae925df905e14b748d2ada69365023ffed2edd4981a1e30a2d25564c8f46",
+          "timestamp": "2023-08-31T22:06:39Z",
+          "event": "lognewsale",
+          "saleId": "2398121",
+          "seller": "albertottttt",
+          "assetIds": ["2199024511569"],
+          "listingPrice": "0.1775 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662808,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "c45e59163e8f575ebf64587e8942286a8e3bacadb536aadb821dfaa3346eb1f7",
+          "timestamp": "2023-08-31T22:06:54Z",
+          "event": "lognewsale",
+          "saleId": "2398122",
+          "seller": "marinaaaaaas",
+          "assetIds": ["2199025377913"],
+          "listingPrice": "0.3380 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "uplandislive",
+          "collectionFee": "0.05000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662818,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "5808b4309d5ad7ec0dfc63357ef0e16bdb8815d13b46b7e34d04110b0af1366c",
+          "timestamp": "2023-08-31T22:06:59Z",
+          "event": "lognewsale",
+          "saleId": "2398123",
+          "seller": "albertottttt",
+          "assetIds": ["2199024511589"],
+          "listingPrice": "0.1775 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662839,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "1b6731b7d8dca9adbe90556908f2f366c114fd08c9dca075c9228658140a6189",
+          "timestamp": "2023-08-31T22:07:09.500Z",
+          "event": "lognewsale",
+          "saleId": "2398124",
+          "seller": "albertottttt",
+          "assetIds": ["2199024512490"],
+          "listingPrice": "0.1775 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662847,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "4be21334992a27dd2476f365ef73c550eabbcb49b3e4759a8971d269756f2b56",
+          "timestamp": "2023-08-31T22:07:13.500Z",
+          "event": "lognewsale",
+          "saleId": "2398125",
+          "seller": "marinaaaaaas",
+          "assetIds": ["2199025509267"],
+          "listingPrice": "0.1620 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "womplayextra",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662859,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "e516b727d9bd7425402747d58b4d8321bd497c1fc03b7cb73039cdcabd5bb196",
+          "timestamp": "2023-08-31T22:07:19.500Z",
+          "event": "lognewsale",
+          "saleId": "2398126",
+          "seller": "albertottttt",
+          "assetIds": ["2199024513824"],
+          "listingPrice": "0.1775 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662928,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "92b84b4950809edf1e300a2e34c9e157f490d0538c0c8f20360410ded97b29b6",
+          "timestamp": "2023-08-31T22:07:54Z",
+          "event": "lognewsale",
+          "saleId": "2398127",
+          "seller": "albertottttt",
+          "assetIds": ["2199024511392"],
+          "listingPrice": "0.1935 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662952,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "1455af4cc501ef7dc52b44a5847c6443f82c580b9dcae771aa911488e3ef516e",
+          "timestamp": "2023-08-31T22:08:06Z",
+          "event": "lognewsale",
+          "saleId": "2398128",
+          "seller": "rezaandnandf",
+          "assetIds": ["2199025459148"],
+          "listingPrice": "0.97 USD",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "womplayextra",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+{
+  "@module": "map_events",
+  "@block": 328662953,
+  "@type": "antelope.atomicmarketsales.v1.AnyEvents",
+  "@data": {
+    "items": [
+      {
+        "lognewsaleitem": {
+          "trxId": "0f5872f549ca0f89e3d5334bcd398ddcec1123f96a42c583dfdc8ffa7668a642",
+          "timestamp": "2023-08-31T22:08:06.500Z",
+          "event": "lognewsale",
+          "saleId": "2398129",
+          "seller": "albertottttt",
+          "assetIds": ["2199024510357"],
+          "listingPrice": "0.1935 EOS",
+          "settlementSymbol": "4,EOS",
+          "collectionName": "railnationgo",
+          "collectionFee": "0.08000000000000000"
+        }
+      }
+    ]
+  }
+}
+
+all done

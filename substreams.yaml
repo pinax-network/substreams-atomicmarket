@@ -1,0 +1,47 @@
+specVersion: v0.1.0
+package:
+  name: "atomicmarketsales"
+  version: v0.1.0
+
+imports:
+  prom: https://github.com/pinax-network/substreams-sink-prometheus.rs/releases/download/v0.1.9/substreams-sink-prometheus-v0.1.9.spkg
+
+protobuf:
+  files:
+    - atomicmarketsales.proto
+  importPaths:
+    - ./proto/v1
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/atomicmarketsales.wasm
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.antelope.type.v1.Block
+    output:
+      type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
+  
+  - name: map_cancelled
+    kind: map
+    inputs:
+      - source: sf.antelope.type.v1.Block
+    output:
+      type: proto:antelope.atomicmarketsales.v1.CancelSaleEvents
+  
+  - name: map_acceptbuyo
+    kind: map
+    inputs:
+      - source: sf.antelope.type.v1.Block
+    output:
+      type: proto:antelope.atomicmarketsales.v1.AcceptbuyoEvents
+  
+  - name: prom_out
+    kind: map
+    inputs:
+      - map: map_events
+    output:
+      type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations

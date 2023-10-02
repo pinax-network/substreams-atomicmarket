@@ -1,0 +1,176 @@
+syntax = "proto3";
+
+package antelope.atomicmarketsales.v1;
+
+import "google/protobuf/any.proto"; // Import Any type
+
+
+message AssertSaleEvents {
+  repeated AssertSale items = 1;
+}
+
+// Assertsale
+message AssertSale {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  uint64 sale_id = 4;
+  repeated uint64 asset_ids_to_assert = 5;
+  string listing_price_to_assert = 6;
+  string settlement_symbol_to_assert = 7;
+  string collection_name = 8;
+}
+
+message CancelSaleEvents {
+  repeated CancelSale items = 1;
+}
+
+// Cancelsale
+message CancelSale {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  //payload
+  uint64 sale_id = 3;
+}
+
+message AcceptbuyoEvents {
+  repeated Acceptbuyo items = 1;
+}
+
+// Acceptbuyo
+message Acceptbuyo {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  //payload
+  uint64 buyoffer_id = 3;
+  repeated uint64 asset_ids = 4;
+  string price = 5;
+  string collection_name = 6;
+}
+
+/*
+message AnyEvents {
+  repeated AnyEvent items = 1;
+}
+
+message AnyEvent {
+  oneof event {
+    SaleEvent saleitem = 1;
+    AuctionEvent auctionitem = 2;
+    NewBuyo newbuyoitem = 3;
+    PurchaseSale purchasesaleitem = 4;
+    LogNewSale lognewsaleitem = 5;
+    AssertSale assertsaleitem = 6;
+  }
+}
+
+message SaleEvents {
+  repeated SaleEvent items = 1;
+}
+
+message SaleEvent {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  string seller = 5;
+  repeated uint64 asset_ids = 6;
+  string listing_price = 7;
+  string settlement_symbol = 8;
+  string maker_marketplace = 9;
+}
+
+message AuctionEvents {
+  repeated AuctionEvent items = 1;
+}
+
+message AuctionEvent {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  string seller = 5;
+  repeated uint64 asset_ids = 6;
+  string starting_bid = 7;
+  uint32 duration = 8;
+  string maker_marketplace = 9;
+}
+
+// Lognewbuyo
+message NewBuyo {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  uint64 buyoffer_id = 4;
+  string buyer = 5;
+  string recipient = 6;
+  string price = 7;
+  repeated uint64 asset_ids = 8;
+  string memo = 9;
+  string maker_marketplace = 10;
+  string collection_name = 11;
+  string collection_fee = 12;
+}
+
+// Acceptbuyo
+// Auctionbid
+// Createbuyo
+// Lognewauct
+
+// Lognewsale
+message LogNewSale {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  uint64 sale_id = 4;
+  string seller = 5;
+  repeated uint64 asset_ids = 6;
+  string listing_price = 7;
+  string settlement_symbol = 8;
+  string maker_marketplace = 9;
+  string collection_name = 10;
+  string collection_fee = 11;
+}
+
+// Purchasesale
+message PurchaseSale {
+  // trace information
+  string trx_id = 1;
+  string timestamp = 2;
+
+  // event type
+  string event = 3;
+
+  //payload
+  string buyer = 4;
+  uint64 sale_id = 5;
+  uint64 intended_delphi_median = 6;
+  string taker_marketplace = 7;
+}*/

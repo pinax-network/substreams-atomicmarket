@@ -1,0 +1,24 @@
+[package]
+name = "atomicmarketsales"
+version = "0.1.0"
+authors = ["Paul <paulm@pinax.network>"]
+description = "Substreams on EOS for Atomic Market sales"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+prost = "0.11"
+prost-types = "0.11"
+substreams = "0.5"
+substreams-antelope = "0.1"
+antelope = "0.1.5"
+substreams-sink-prometheus = "0.1"
+
+[profile.release]
+lto = true
+opt-level = 's'
+strip = "debuginfo"
