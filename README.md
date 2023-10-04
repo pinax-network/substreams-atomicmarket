@@ -6,6 +6,7 @@ This substreams is meant to retrieve data in order to build market volume charts
 
 ```bash
 make run 
+make sink
 ```
 
 ### Mermaid graph

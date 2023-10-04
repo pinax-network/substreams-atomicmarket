@@ -27,7 +27,7 @@ info:
 
 .PHONY: run
 run: build
-	substreams run -e eos.firehose.eosnation.io:9001 map_events -s 329695542 -t +1
+	substreams run -e eos.firehose.eosnation.io:9001 map_events -s 329706748 -t +10
 
 .PHONY: gui
 gui: build
@@ -35,8 +35,8 @@ gui: build
 
 .PHONY: prometheus
 prometheus: build
-	substreams gui -e eos.firehose.eosnation.io:9001 substreams.yaml prom_out -s 329695542 -t +10
+	substreams gui -e eos.firehose.eosnation.io:9001 substreams.yaml prom_out -s 329695542 -t +100000
 
 .PHONY: sink
 sink: build
-	substreams-sink-prometheus run -e eos.firehose.eosnation.io:9001 substreams.yaml prom_out -s 329695542 -t +1
+	substreams-sink-redis run -e https://eos.firehose.eosnation.io:9001  --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.0/atomicmarketsales-v0.1.0.spkg --module-name prom_out -s 323323371 -t 328676379

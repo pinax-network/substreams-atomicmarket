@@ -14,6 +14,11 @@ fn prom_out(events: AssertSaleEvents) -> Result<PrometheusOperations, Error> {
     for item in &events.items {
         let (sales_count, total_price) = sales_by_collection.entry(item.collection_name.clone()).or_insert((0.0, 0.0));
         *sales_count += 1.0;
+        
+        // skips USD transactions as I need to convert them to EOS but not sure how yet
+        if item.listing_price_to_assert.contains(" USD") {
+            continue;
+        }
         // filter the numerous part of the string and convert it to float
         let price = item.listing_price_to_assert.replace(" EOS", "").parse::<f64>().unwrap();
         *total_price += price;
