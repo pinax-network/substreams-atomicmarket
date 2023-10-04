@@ -8,6 +8,7 @@ This substreams is meant to retrieve data in order to build market volume charts
 make run 
 make sink
 ```
+The `make sink` command will dump `atomicmarket` `assertsale` events from the 1st of Aug to 1st of Sep 2023 on the EOS mainnet into a Redis TimeSeries database.
 
 ### Mermaid graph
 ```mermaid
@@ -33,23 +34,23 @@ Name: map_events
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: 032864daaf1ecd0a7e3e4582dae8539814314ac4
+Hash: 9871bbb16dcdea5a23184074036ab7cb9ef6b5fb
 
 Name: map_cancelled
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.CancelSaleEvents
-Hash: 26e94d2fb9e1acce0db1ec1bae28e34f4ec1b1f2
+Hash: b2b03e8849e97b76bec5226f822c1e81a5880d3c
 
 Name: map_acceptbuyo
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AcceptbuyoEvents
-Hash: 45f4c93683fede44601359a4c6c08b1efaed1e53
+Hash: 1805b63804d82e424477641c451e775ebd69a63d
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: a849ff919e150a3e08f978d10a3dffa31dc1d5c6
+Hash: 4b5bf1717023b962799743fb5fefc8fd56c9526b
 ```

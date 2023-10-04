@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: "atomicmarketsales"
-  version: v0.1.0
+  version: v0.1.1
 
 imports:
   prom: https://github.com/pinax-network/substreams-sink-prometheus.rs/releases/download/v0.1.9/substreams-sink-prometheus-v0.1.9.spkg
