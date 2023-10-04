@@ -1,5 +1,4 @@
 use substreams::log;
-use std::collections::HashMap;
 use substreams::errors::Error;
 use substreams_antelope::Block;
 
@@ -10,7 +9,32 @@ use crate::atomicmarketsales::*;
 fn map_events(block: Block) -> Result<AssertSaleEvents, Error> {
     let mut response = vec![];
 
-    let mut db_ops_sales: HashMap<u64, String> = HashMap::new();
+    for trx in block.all_transaction_traces() {
+        // db_ops
+        for db_op in &trx.db_ops {
+            if db_op.table_name != "sales" {continue}
+            if db_op.operation != 3 {continue}
+            
+            match abi::SalesS::try_from(db_op.old_data_json.as_str()) {
+                Ok(data) => {
+                    response.push(AssertSale {
+                        trx_id: trx.id.clone(),
+                        timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
+                        sale_id: data.sale_id,
+                        asset_ids: data.asset_ids,
+                        listing_price: data.listing_price,
+                        collection_name: data.collection_name,
+                    });
+                },
+                Err(_) => {
+                    // print data to console
+                    log::info!("{:?}", db_op.old_data_json);
+                    panic!("Failed to decode atomicmarket::SalesS");
+                }
+            };
+        }
+    }
+    /*let mut db_ops_sales: HashMap<u64, String> = HashMap::new();
     for trx in block.all_transaction_traces() {
         // db_ops
         for db_op in &trx.db_ops {
@@ -66,7 +90,7 @@ fn map_events(block: Block) -> Result<AssertSaleEvents, Error> {
                 }
             }
         }
-    }
+    }*/
     Ok(AssertSaleEvents { items: response })
 }
 

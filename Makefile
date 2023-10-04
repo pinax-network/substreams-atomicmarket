@@ -27,7 +27,7 @@ info:
 
 .PHONY: run
 run: build
-	substreams run -e eos.firehose.eosnation.io:9001 map_events -s 329706748 -t +10
+	substreams run -e eos.firehose.eosnation.io:9001 map_events -s 323511941 -t +1
 
 .PHONY: gui
 gui: build
