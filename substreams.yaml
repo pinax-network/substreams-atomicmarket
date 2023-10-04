@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: "atomicmarketsales"
-  version: v0.1.1
+  version: v0.1.2
 
 imports:
   prom: https://github.com/pinax-network/substreams-sink-prometheus.rs/releases/download/v0.1.9/substreams-sink-prometheus-v0.1.9.spkg
@@ -18,7 +18,7 @@ binaries:
     file: ./target/wasm32-unknown-unknown/release/atomicmarketsales.wasm
 
 modules:
-  - name: map_events
+  - name: map_sales
     kind: map
     inputs:
       - source: sf.antelope.type.v1.Block
@@ -42,6 +42,6 @@ modules:
   - name: prom_out
     kind: map
     inputs:
-      - map: map_events
+      - map: map_sales
     output:
       type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
