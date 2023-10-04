@@ -14,18 +14,13 @@ pub struct AssertSale {
     pub trx_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub timestamp: ::prost::alloc::string::String,
-    /// event type
-    #[prost(string, tag="3")]
-    pub event: ::prost::alloc::string::String,
     /// payload
     #[prost(uint64, tag="4")]
     pub sale_id: u64,
     #[prost(uint64, repeated, tag="5")]
-    pub asset_ids_to_assert: ::prost::alloc::vec::Vec<u64>,
+    pub asset_ids: ::prost::alloc::vec::Vec<u64>,
     #[prost(string, tag="6")]
-    pub listing_price_to_assert: ::prost::alloc::string::String,
-    #[prost(string, tag="7")]
-    pub settlement_symbol_to_assert: ::prost::alloc::string::String,
+    pub listing_price: ::prost::alloc::string::String,
     #[prost(string, tag="8")]
     pub collection_name: ::prost::alloc::string::String,
 }

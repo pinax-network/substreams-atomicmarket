@@ -15,14 +15,10 @@ message AssertSale {
   string trx_id = 1;
   string timestamp = 2;
 
-  // event type
-  string event = 3;
-
   //payload
   uint64 sale_id = 4;
-  repeated uint64 asset_ids_to_assert = 5;
-  string listing_price_to_assert = 6;
-  string settlement_symbol_to_assert = 7;
+  repeated uint64 asset_ids = 5;
+  string listing_price = 6;
   string collection_name = 8;
 }
 
