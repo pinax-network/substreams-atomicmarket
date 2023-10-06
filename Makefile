@@ -39,4 +39,4 @@ prometheus: build
 
 .PHONY: sink
 sink: build
-	substreams-sink-redis run -e https://eos.firehose.eosnation.io:9001  --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.2/atomicmarketsales-v0.1.2.spkg --module-name prom_out -s 323323371 -t 328676379
+	substreams-sink-redis run -e https://eos.firehose.eosnation.io:9001  --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.2/atomicmarketsales-v0.1.2.spkg --module-name prom_out -s 323323371 -t 328676379 --production-mode true
