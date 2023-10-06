@@ -1,0 +1,23 @@
+" AtomicMarket Assertsale events "
+type AssertSaleEvents @entity{
+  " ID will be the atomicmarket sale ID "
+  id: ID!
+
+  " AtomicMarket sale ID"
+  sale_id: BigInt!
+
+  " Transaction ID"
+  trx_id: String!
+
+  " Timestamp of transaction "
+  timestamp: String!
+
+  "Asset IDs of the sold assets"
+  asset_ids: Array!
+
+  "Price paid for the sale"
+  listing_price: String!
+
+  "Collection name of the collection concerned by the sale"
+  collection_name: String!
+}

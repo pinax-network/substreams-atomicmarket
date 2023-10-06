@@ -1,0 +1,17 @@
+specVersion: 0.0.6
+description: AtomicMarket Sales
+repository: https://github.com/pinax-network/substreams-atomicmarket-sales.git
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: substreams
+    name: atomicmarketsales
+    network: mainnet
+    source:
+      package:
+        moduleName: graph_out
+        file: ./atomicmarketsales-v0.1.3.spkg
+    mapping:
+      kind: substreams/graph-entities
+      apiVersion: 0.0.7
