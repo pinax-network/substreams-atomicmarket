@@ -27,11 +27,11 @@ info:
 
 .PHONY: run
 run: build
-	substreams run -e eos.firehose.eosnation.io:9001 map_events -s 323511941 -t +1
+	substreams run -e eos.firehose.eosnation.io:9001 map_sales -s 323511941 -t +1
 
 .PHONY: gui
 gui: build
-	substreams gui -e eos.firehose.eosnation.io:9001 map_events -s 329693282 -t 329871503
+	substreams gui -e eos.firehose.eosnation.io:9001 map_sales -s 329693282 -t 329871503
 
 .PHONY: prometheus
 prometheus: build
