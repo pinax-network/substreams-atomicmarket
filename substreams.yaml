@@ -1,10 +1,11 @@
 specVersion: v0.1.0
 package:
   name: "atomicmarketsales"
-  version: v0.1.2
+  version: v0.1.3
 
 imports:
   prom: https://github.com/pinax-network/substreams-sink-prometheus.rs/releases/download/v0.1.9/substreams-sink-prometheus-v0.1.9.spkg
+  entities: https://github.com/streamingfast/substreams-sink-entity-changes/releases/download/v1.3.0/substreams-sink-entity-changes-v1.3.0.spkg
 
 protobuf:
   files:
@@ -45,3 +46,11 @@ modules:
       - map: map_sales
     output:
       type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
+
+# sink from https://github.com/streamingfast/substreams-sink-entity-changes
+  - name: graph_out
+    kind: map
+    inputs:
+      - map: map_sales
+    output:
+      type: proto:sf.substreams.sink.entity.v1.EntityChanges

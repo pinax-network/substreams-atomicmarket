@@ -2,6 +2,9 @@ use substreams::errors::Error;
 use std::collections::HashMap;
 use substreams_sink_prometheus::{PrometheusOperations, Counter};
 
+use substreams_entity_change::tables::Tables;
+use substreams_entity_change::pb::entity::EntityChanges;
+
 use crate::atomicmarketsales::*;
 
 #[substreams::handlers::map]
@@ -40,4 +43,24 @@ fn prom_out(events: AssertSaleEvents) -> Result<PrometheusOperations, Error> {
     }
 
     Ok(prom_ops)
+}
+
+#[substreams::handlers::map]
+fn graph_out(events: AssertSaleEvents) -> Result<EntityChanges, Error> {
+    let mut tables = Tables::new();
+
+    for event in events.items {
+        let sale_id = &event.sale_id.to_string();
+        // convert Vec<u64> to Vec<String>
+        let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
+        tables
+            .create_row("AssertSale", sale_id)
+            .set_bigint("sale_id", sale_id)
+            .set("trx_id", &event.trx_id)
+            .set("timestamp", &event.timestamp)
+            .set("asset_ids", asset_ids)
+            .set("listing_price", &event.listing_price)
+            .set("collection_name", &event.collection_name);
+    }
+    Ok(tables.to_entity_changes())
 }
