@@ -2,8 +2,9 @@ use substreams::{errors::Error, pb::substreams::Clock};
 use std::collections::HashMap;
 use substreams_sink_prometheus::{PrometheusOperations, Counter};
 
-use substreams_entity_change::tables::Tables;
-use substreams_entity_change::pb::entity::EntityChanges;
+use substreams_entity_change::{tables::Tables, pb::entity::EntityChanges};
+use substreams_database_change::pb::database::{table_change::Operation, DatabaseChanges};
+
 
 use crate::atomicmarketsales::*;
 
@@ -64,4 +65,29 @@ fn graph_out(clock: Clock, events: AssertSaleEvents) -> Result<EntityChanges, Er
             .set("collection_name", &event.collection_name);
     }
     Ok(tables.to_entity_changes())
+}
+
+#[substreams::handlers::map]
+pub fn db_out(clock: Clock, events: AssertSaleEvents) -> Result<DatabaseChanges, Error> {
+    let timestamp = clock.timestamp.unwrap().seconds.to_string();
+    let mut database_changes: DatabaseChanges = Default::default();
+  
+    for event in events.items {
+        let sale_id = &event.sale_id.to_string();
+        
+        // convert Vec<u64> to String
+        let asset_ids: String = event.asset_ids.iter().map(|x| x.to_string()).collect::<Vec<String>>().join(",");
+        // required by the database_change crate (might have problems if the asset_id is too big)
+        //let asset_ids: Vec<u8> = event.asset_ids.iter().map(|x| x.to_string().parse::<u8>().unwrap()).collect();
+
+        database_changes
+        .push_change("sales", sale_id.clone(), 0, Operation::Create)
+        .change("sale_id", (None, sale_id))
+        .change("trx_id", (None, event.trx_id))
+        .change("timestamp", (None, timestamp.clone()))
+        .change("asset_ids", (None, asset_ids))
+        .change("listing_price", (None, event.listing_price))
+        .change("collection_name", (None, event.collection_name));
+    }
+    Ok(database_changes)
 }

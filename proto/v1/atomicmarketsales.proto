@@ -17,32 +17,3 @@ message AssertSale {
   string listing_price = 6;
   string collection_name = 8;
 }
-
-message CancelSaleEvents {
-  repeated CancelSale items = 1;
-}
-
-// Cancelsale
-message CancelSale {
-  // trace information
-  string trx_id = 1;
-
-  //payload
-  uint64 sale_id = 3;
-}
-
-message AcceptbuyoEvents {
-  repeated Acceptbuyo items = 1;
-}
-
-// Acceptbuyo
-message Acceptbuyo {
-  // trace information
-  string trx_id = 1;
-
-  //payload
-  uint64 buyoffer_id = 3;
-  repeated uint64 asset_ids = 4;
-  string price = 5;
-  string collection_name = 6;
-}

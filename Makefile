@@ -41,6 +41,10 @@ prometheus: build
 graph_out:
 	substreams run -e eos.firehose.eosnation.io:9001 substreams.yaml graph_out -s 323511941 -t +1
 
+.PHONY: db_out
+db_out:
+	substreams run -e eos.firehose.eosnation.io:9001 substreams.yaml db_out -s 323511941 -t +1
+
 .PHONY: sink
 sink: build
 	substreams-sink-redis run -e https://eos.firehose.eosnation.io:9001  --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.3/atomicmarketsales-v0.1.3.spkg --module-name prom_out -s 323323371 -t 328676379 --production-mode true
