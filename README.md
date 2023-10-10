@@ -17,14 +17,15 @@ The `make sink` command will dump `atomicmarket` `assertsale` events from the 1s
 graph TD;
   map_sales[map: map_sales];
   sf.antelope.type.v1.Block[source: sf.antelope.type.v1.Block] --> map_sales;
-  map_cancelled[map: map_cancelled];
-  sf.antelope.type.v1.Block[source: sf.antelope.type.v1.Block] --> map_cancelled;
-  map_acceptbuyo[map: map_acceptbuyo];
-  sf.antelope.type.v1.Block[source: sf.antelope.type.v1.Block] --> map_acceptbuyo;
   prom_out[map: prom_out];
   map_sales --> prom_out;
   graph_out[map: graph_out];
+  sf.substreams.v1.Clock[source: sf.substreams.v1.Clock] --> graph_out;
   map_sales --> graph_out;
+  db_out[map: db_out];
+  sf.substreams.v1.Clock[source: sf.substreams.v1.Clock] --> db_out;
+  map_sales --> db_out;
+
 ```
 
 ### Modules
@@ -37,29 +38,23 @@ Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: f3b0c6648008c8e55cc3e80feb2953789ba62035
-
-Name: map_cancelled
-Initial block: 0
-Kind: map
-Output Type: proto:antelope.atomicmarketsales.v1.CancelSaleEvents
-Hash: a45c35b8c288378e1b0fe3d0d56fdac334be5469
-
-Name: map_acceptbuyo
-Initial block: 0
-Kind: map
-Output Type: proto:antelope.atomicmarketsales.v1.AcceptbuyoEvents
-Hash: a378e231692bd9d452ec24eeea23ec542174671f
+Hash: 7ebf2e3af6e6087966378ac2ccb8bb65c24ce3e5
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: 81e3b6e9a680389e0ebb061d3abe95f78428f03c
+Hash: 74f6452c942e4fdefc09980f5fbfff0dca2ca3e6
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 6fd8f13095c30d1fe3396844761575dfed285586
+Hash: 193c2b198531c1077cf7bac1ffb5979154d46419
+
+Name: db_out
+Initial block: 0
+Kind: map
+Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+Hash: 754dc5f7805c967e9731a4bfc2557dd448748e13
 ```
