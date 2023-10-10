@@ -19,7 +19,6 @@ fn map_sales(block: Block) -> Result<AssertSaleEvents, Error> {
                 Ok(data) => {
                     response.push(AssertSale {
                         trx_id: trx.id.clone(),
-                        timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
                         sale_id: data.sale_id,
                         asset_ids: data.asset_ids,
                         listing_price: data.listing_price,
@@ -53,7 +52,6 @@ fn map_cancelled(block: Block) -> Result<CancelSaleEvents, Error> {
                     Ok(data) => {
                         response.push(CancelSale {
                             trx_id: trx.id.clone(),
-                            timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
                             sale_id: data.sale_id,
                         });
                     },
@@ -84,7 +82,6 @@ fn map_acceptbuyo(block: Block) -> Result<AcceptbuyoEvents, Error> {
                 Ok(data) => {
                     response.push(Acceptbuyo {
                         trx_id: trx.id.clone(),
-                        timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
                         buyoffer_id: data.buyoffer_id,
                         asset_ids: data.asset_ids,
                         price: data.price,

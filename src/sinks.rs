@@ -1,4 +1,4 @@
-use substreams::errors::Error;
+use substreams::{errors::Error, pb::substreams::Clock};
 use std::collections::HashMap;
 use substreams_sink_prometheus::{PrometheusOperations, Counter};
 
@@ -46,8 +46,9 @@ fn prom_out(events: AssertSaleEvents) -> Result<PrometheusOperations, Error> {
 }
 
 #[substreams::handlers::map]
-fn graph_out(events: AssertSaleEvents) -> Result<EntityChanges, Error> {
+fn graph_out(clock: Clock, events: AssertSaleEvents) -> Result<EntityChanges, Error> {
     let mut tables = Tables::new();
+    let timestamp = clock.timestamp.unwrap().seconds.to_string();
 
     for event in events.items {
         let sale_id = &event.sale_id.to_string();
@@ -57,7 +58,7 @@ fn graph_out(events: AssertSaleEvents) -> Result<EntityChanges, Error> {
             .create_row("AssertSale", sale_id)
             .set_bigint("sale_id", sale_id)
             .set("trx_id", &event.trx_id)
-            .set("timestamp", &event.timestamp)
+            .set("timestamp", &timestamp)
             .set("asset_ids", asset_ids)
             .set("listing_price", &event.listing_price)
             .set("collection_name", &event.collection_name);

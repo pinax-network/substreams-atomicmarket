@@ -12,8 +12,6 @@ pub struct AssertSale {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,
-    #[prost(string, tag="2")]
-    pub timestamp: ::prost::alloc::string::String,
     /// payload
     #[prost(uint64, tag="4")]
     pub sale_id: u64,
@@ -37,8 +35,6 @@ pub struct CancelSale {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,
-    #[prost(string, tag="2")]
-    pub timestamp: ::prost::alloc::string::String,
     /// payload
     #[prost(uint64, tag="3")]
     pub sale_id: u64,
@@ -56,8 +52,6 @@ pub struct Acceptbuyo {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,
-    #[prost(string, tag="2")]
-    pub timestamp: ::prost::alloc::string::String,
     /// payload
     #[prost(uint64, tag="3")]
     pub buyoffer_id: u64,

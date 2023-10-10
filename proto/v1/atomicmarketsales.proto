@@ -10,7 +10,6 @@ message AssertSaleEvents {
 message AssertSale {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
 
   //payload
   uint64 sale_id = 4;
@@ -27,7 +26,6 @@ message CancelSaleEvents {
 message CancelSale {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
 
   //payload
   uint64 sale_id = 3;
@@ -41,7 +39,6 @@ message AcceptbuyoEvents {
 message Acceptbuyo {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
 
   //payload
   uint64 buyoffer_id = 3;
