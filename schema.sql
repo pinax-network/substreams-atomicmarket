@@ -5,6 +5,6 @@ create table sales
     trx_id      text,
     timestamp   timestamp,
     asset_ids   text,
-    listing_price  float,
+    listing_price  text,
     collection_name text,
 );

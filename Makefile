@@ -42,7 +42,7 @@ graph_out:
 	substreams run -e eos.firehose.eosnation.io:9001 substreams.yaml graph_out -s 323511941 -t +1
 
 .PHONY: db_out
-db_out:
+db_out: build
 	substreams run -e eos.firehose.eosnation.io:9001 substreams.yaml db_out -s 323511941 -t +1
 
 .PHONY: sink

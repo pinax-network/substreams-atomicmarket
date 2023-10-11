@@ -69,7 +69,7 @@ fn graph_out(clock: Clock, events: AssertSaleEvents) -> Result<EntityChanges, Er
 
 #[substreams::handlers::map]
 pub fn db_out(clock: Clock, events: AssertSaleEvents) -> Result<DatabaseChanges, Error> {
-    let timestamp = clock.timestamp.unwrap().seconds.to_string();
+    let timestamp = clock.timestamp.unwrap().to_string();
     let mut database_changes: DatabaseChanges = Default::default();
   
     for event in events.items {
