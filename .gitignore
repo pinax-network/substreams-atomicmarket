@@ -4,3 +4,4 @@ state.yaml
 Cargo.lock
 *.spkg
 cursor.lock
+src/pb/pinax.*
