@@ -1,10 +1,12 @@
-create table sales
+CREATE TABLE Sales
 (
-    id          text not null constraint sales_pk primary key,
-    sale_id     text,
-    trx_id      text,
-    timestamp   timestamp,
-    asset_ids   text,
-    listing_price  text,
-    collection_name text,
-);
+    sale_id     UInt64,
+    trx_id      FixedString(64),
+    asset_ids   Array(UInt64),
+    listing_price_amount  Float64,
+    listing_price_symcode FixedString(7),
+    collection_name FixedString(12),
+)
+ENGINE = ReplacingMergeTree
+PRIMARY KEY (sales_id)
+ORDER BY (sales_id, collection_name, listing_price_symcode, trx_id);
