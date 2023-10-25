@@ -48,7 +48,3 @@ db_out: build
 .PHONY: sink
 sink: build
 	substreams-sink-redis run -e https://eos.firehose.eosnation.io:9001  --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.4/atomicmarketsales-v0.1.4.spkg --module-name prom_out -s 323323371 -t 328676379 --production-mode true
-
-.PHONY: webhook
-webhook: build
-	~/substreams-sink-webhook-linux run -e https://eos.firehose.eosnation.io:9001 --manifest https://github.com/pinax-network/substreams-atomicmarket-sales/releases/download/v0.1.4/atomicmarketsales-v0.1.4.spkg --module-name db_out -s 323323371 -t 328676379 --webhook-url localhost:3003 --secret-key "d9ff4613e26f2d33a685be5ea03f0ebea5b00ef1acf4da0ea58bfbf436d27da6b246e55400ea143c30cf0d305f25998f3340538800de3cf6316e878f9d0101a3"

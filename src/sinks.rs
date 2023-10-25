@@ -1,3 +1,4 @@
+use antelope::{Asset};
 use substreams::{errors::Error, pb::substreams::Clock};
 use std::collections::HashMap;
 use substreams_sink_prometheus::{PrometheusOperations, Counter};
@@ -68,12 +69,14 @@ fn graph_out(clock: Clock, events: AssertSaleEvents) -> Result<EntityChanges, Er
 }
 
 #[substreams::handlers::map]
-pub fn db_out(clock: Clock, events: AssertSaleEvents) -> Result<DatabaseChanges, Error> {
-    let timestamp = clock.timestamp.unwrap().to_string();
+// Timestamp is ignored for Clickhouse since it is automatically generated
+pub fn db_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<DatabaseChanges, Error> {
+    // let timestamp = clock.timestamp.unwrap().to_string();
     let mut database_changes: DatabaseChanges = Default::default();
   
     for event in events.items {
         let sale_id = &event.sale_id.to_string();
+        let asset = Asset::from(event.listing_price.as_str());
         
         // convert Vec<u64> to String
         let asset_ids: String = event.asset_ids.iter().map(|x| x.to_string()).collect::<Vec<String>>().join(",");
@@ -84,9 +87,17 @@ pub fn db_out(clock: Clock, events: AssertSaleEvents) -> Result<DatabaseChanges,
         .push_change("sales", sale_id.clone(), 0, Operation::Create)
         .change("sale_id", (None, sale_id))
         .change("trx_id", (None, event.trx_id))
-        .change("timestamp", (None, timestamp.clone()))
+
+        // not needed for clickhouse
+        //.change("timestamp", (None, timestamp.clone()))
         .change("asset_ids", (None, asset_ids))
-        .change("listing_price", (None, event.listing_price))
+
+        // Either use value (Float64) or amount(Int64) and precision (UInt8)
+        //.change("listing_price_value", (None, asset.value()))
+        .change("listing_price_amount", (None, asset.amount))
+        .change("listing_price_precision", (None, asset.symbol.precision()))
+        .change("listing_price_symcode", (None, asset.symbol.code().to_string()))
+
         .change("collection_name", (None, event.collection_name));
     }
     Ok(database_changes)
