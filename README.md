@@ -95,30 +95,30 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarketsales
-Version: v0.2.0
+Version: v0.2.1
 Modules:
 ----
 Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: fd4a5fc9a395ef7bc382f6799e140d3153d199c6
+Hash: a80b91251fb8de17ede80b990532bc5ac42f7f30
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: 721de95cfdc322e0b2d086e7a3f5c193104f833a
+Hash: e5e22868d390b54ed2f7959fa9513613341dc7c9
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: bb53da87a836ccd09cde4253fff4f14a2dff4389
+Hash: 2934a894628cedda16eb6d20e1cc39b9b42564fe
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: 5591f6e1e4bb15db5b61c6dc4acf3fd2ae53903e
+Hash: aa4c3308033400d368eb8ada278469934e81de3f
 ```
