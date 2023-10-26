@@ -9,5 +9,5 @@ CREATE TABLE Sales
     collection_name FixedString(12),
 )
 ENGINE = ReplacingMergeTree
-PRIMARY KEY (sales_id)
-ORDER BY (sales_id, collection_name, listing_price_symcode, trx_id);
+PRIMARY KEY (sale_id)
+ORDER BY (sale_id, collection_name, listing_price_symcode, trx_id);
