@@ -37,7 +37,7 @@ graph TD;
 {
   "entityChanges": [
       {
-        "entity": "AssertSale",
+        "entity": "Sales",
         "id": "2321191",
         "operation": "OPERATION_CREATE",
         "fields": [
@@ -107,23 +107,23 @@ Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: a3a47738caf049c12c9abc06fcf53562e20c759d
+Hash: a7c2d99723c69bf2386c0c1572646c17d48ebc20
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: 4fc3e775f9d9f5de0472176c8e742e092a08307d
+Hash: f1526acf76bd2898e73c625f1ff320dcdd6afe0c
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 6325fba150ad6f7e64fded4fa3b31dc489d1c0f4
+Hash: 81b5b4db2086cc4504d303c32121db9feb66aaf4
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: 6e6ae5b850af9676556419e77219282fda8af047
+Hash: 7fea1c8148572b3289aa627d3d515d39bf8d62ba
 ```

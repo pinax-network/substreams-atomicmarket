@@ -60,7 +60,7 @@ fn graph_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<EntityChanges
         // convert Vec<u64> to Vec<String>
         let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
         tables
-            .create_row("AssertSale", sale_id)
+            .create_row("Sales", sale_id)
             .set_bigint("sale_id", sale_id)
             .set("trx_id", &event.trx_id)
             //.set("timestamp", &timestamp)
@@ -89,7 +89,7 @@ pub fn db_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<DatabaseChan
         //let asset_ids: Vec<u8> = event.asset_ids.iter().map(|x| x.to_string().parse::<u8>().unwrap()).collect();
 
         database_changes
-        .push_change("sales", sale_id.clone(), 0, Operation::Create)
+        .push_change("Sales", sale_id.clone(), 0, Operation::Create)
         .change("sale_id", (None, sale_id))
         .change("trx_id", (None, event.trx_id))
 
