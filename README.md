@@ -24,7 +24,6 @@ graph TD;
   prom_out[map: prom_out];
   map_sales --> prom_out;
   graph_out[map: graph_out];
-  sf.substreams.v1.Clock[source: sf.substreams.v1.Clock] --> graph_out;
   map_sales --> graph_out;
   db_out[map: db_out];
   map_sales --> db_out;
@@ -120,7 +119,7 @@ Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 371ea4fbf5f47f4587d7fe46d68557438f48a8d4
+Hash: 6325fba150ad6f7e64fded4fa3b31dc489d1c0f4
 
 Name: db_out
 Initial block: 0
