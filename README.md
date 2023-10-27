@@ -37,55 +37,61 @@ graph TD;
 ```json
 {
   "entityChanges": [
-    {
-      "entity": "AssertSale",
-      "id": "2321191",
-      "operation": "OPERATION_CREATE",
-      "fields": [
-        {
-          "name": "sale_id",
-          "newValue": {
-            "bigint": "2321191"
-          }
-        },
-        {
-          "name": "timestamp",
-          "newValue": {
-            "string": "1690942290"
-          }
-        },
-        {
-         "name": "listing_price",
-          "newValue": {
-            "string": "0.04 USD"
-          }
-        },
-        {
-          "name": "trx_id",
-          "newValue": {
-            "string": "b70bfe7ddea07a0be32991684fff17d6d74825e905b785e43be236845779f318"
-          }
-        },
-        {
-          "name": "asset_ids",
-          "newValue": {
-            "array": {
-              "value": [
-                {
-                  "string": "2199025056631"
-                }
-              ]
+      {
+        "entity": "AssertSale",
+        "id": "2321191",
+        "operation": "OPERATION_CREATE",
+        "fields": [
+          {
+            "name": "sale_id",
+            "newValue": {
+              "bigint": "2321191"
+            }
+          },
+          {
+            "name": "listing_price_symcode",
+            "newValue": {
+              "string": "USD"
+            }
+          },
+          {
+            "name": "listing_price_precision",
+            "newValue": {
+              "bigint": "2"
+            }
+          },
+          {
+            "name": "collection_name",
+            "newValue": {
+              "string": "chessunivers"
+            }
+          },
+          {
+            "name": "trx_id",
+            "newValue": {
+              "string": "b70bfe7ddea07a0be32991684fff17d6d74825e905b785e43be236845779f318"
+            }
+          },
+          {
+            "name": "asset_ids",
+            "newValue": {
+              "array": {
+                "value": [
+                  {
+                    "string": "2199025056631"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "listing_price_amount",
+            "newValue": {
+              "bigint": "4"
             }
           }
-        },
-        {
-          "name": "collection_name",
-          "newValue": {
-            "string": "chessunivers"
-          }
-        }
-      ]
-    },
+        ]
+      },
     ...
   ]
 }
@@ -95,30 +101,30 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarketsales
-Version: v0.2.1
+Version: v0.2.2
 Modules:
 ----
 Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: a80b91251fb8de17ede80b990532bc5ac42f7f30
+Hash: a3a47738caf049c12c9abc06fcf53562e20c759d
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: e5e22868d390b54ed2f7959fa9513613341dc7c9
+Hash: 4fc3e775f9d9f5de0472176c8e742e092a08307d
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 2934a894628cedda16eb6d20e1cc39b9b42564fe
+Hash: 371ea4fbf5f47f4587d7fe46d68557438f48a8d4
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: aa4c3308033400d368eb8ada278469934e81de3f
+Hash: 6e6ae5b850af9676556419e77219282fda8af047
 ```

@@ -1,6 +1,6 @@
 [package]
 name = "atomicmarketsales"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Paul <paulm@pinax.network>"]
 description = "Substreams on EOS for Atomic Market sales"
 edition = "2021"

@@ -9,14 +9,17 @@ type AssertSaleEvents @entity{
   " Transaction ID"
   trx_id: String!
 
-  " Timestamp of transaction "
-  timestamp: String!
-
   "Asset IDs of the sold assets"
   asset_ids: Array!
 
-  "Price paid for the sale"
-  listing_price: String!
+  "Asset amount paid for the sale"
+  listing_price_amount: BigInt!
+
+  "Precision of the asset"
+  listing_price_precision: Int!
+
+  "Symcode of the asset"
+  listing_price_symcode: String!
 
   "Collection name of the collection concerned by the sale"
   collection_name: String!
