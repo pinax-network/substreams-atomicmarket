@@ -60,7 +60,7 @@ fn graph_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<EntityChanges
         // convert Vec<u64> to Vec<String>
         let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
         tables
-            .create_row("Sales", sale_id)
+            .create_row("test", sale_id)
             .set_bigint("sale_id", sale_id)
             .set("trx_id", &event.trx_id)
             //.set("timestamp", &timestamp)
@@ -68,6 +68,7 @@ fn graph_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<EntityChanges
             .set("listing_price_amount", asset.amount)
             .set("listing_price_precision", asset.symbol.precision())
             .set("listing_price_symcode", &asset.symbol.code().to_string())
+            .set("listing_price_value", asset.value().to_string())
             .set("collection_name", &event.collection_name);
     }
     Ok(tables.to_entity_changes())

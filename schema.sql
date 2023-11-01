@@ -1,4 +1,4 @@
-CREATE TABLE Sales
+CREATE TABLE test
 (
     sale_id     UInt64,
     trx_id      String,
@@ -6,6 +6,7 @@ CREATE TABLE Sales
     listing_price_amount  Int64,
     listing_price_precision  UInt8,
     listing_price_symcode    String,
+    listing_price_value      Float64,
     collection_name String,
 )
 ENGINE = ReplacingMergeTree
