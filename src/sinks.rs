@@ -68,6 +68,7 @@ fn graph_out(/*clock: Clock,*/ events: AssertSaleEvents) -> Result<EntityChanges
             .set("listing_price_amount", asset.amount)
             .set("listing_price_precision", asset.symbol.precision())
             .set("listing_price_symcode", &asset.symbol.code().to_string())
+            .set("listing_price_value", asset.value().to_string())
             .set("collection_name", &event.collection_name);
     }
     Ok(tables.to_entity_changes())

@@ -88,6 +88,12 @@ graph TD;
             "newValue": {
               "bigint": "4"
             }
+          },
+          {
+            "name": "listing_price_value",
+            "newValue": {
+              "string": "0.04"
+            }
           }
         ]
       },
@@ -100,30 +106,30 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarketsales
-Version: v0.2.2
+Version: v0.2.3
 Modules:
 ----
 Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: a7c2d99723c69bf2386c0c1572646c17d48ebc20
+Hash: b9f0385d22cedd6d251e24cdb1345141bc71eaa8
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: f1526acf76bd2898e73c625f1ff320dcdd6afe0c
+Hash: 5060bc9fa0021d368221ed77468d1b835ef4ea39
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 81b5b4db2086cc4504d303c32121db9feb66aaf4
+Hash: b804edd28e29f236ef6ea6b8f94f82813688e805
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: 7fea1c8148572b3289aa627d3d515d39bf8d62ba
+Hash: a4daac2a805d33ddf175a2e0ec6f3048bdd472a7
 ```

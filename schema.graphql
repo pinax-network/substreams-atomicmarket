@@ -21,6 +21,9 @@ type AssertSaleEvents @entity{
   "Symcode of the asset"
   listing_price_symcode: String!
 
+  "Asset value paid for the sale"
+  listing_price_value : Float!
+
   "Collection name of the collection concerned by the sale"
   collection_name: String!
 }
