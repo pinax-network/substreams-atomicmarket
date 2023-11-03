@@ -1,4 +1,4 @@
-CREATE TABLE test
+CREATE TABLE Sales
 (
     sale_id     UInt64,
     trx_id      String,
