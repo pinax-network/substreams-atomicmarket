@@ -113,23 +113,23 @@ Name: map_sales
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
-Hash: 46d76d5f3b3e9a043b23f45feab766f542753135
+Hash: b9f0385d22cedd6d251e24cdb1345141bc71eaa8
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: ac936b02160cd0f9bdb4b04da9ed5519e233f76b
+Hash: 5060bc9fa0021d368221ed77468d1b835ef4ea39
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 2493e439e60b130e1b11566dc697d3d7a823879c
+Hash: b804edd28e29f236ef6ea6b8f94f82813688e805
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: d0d1da39835ba70e924a6eab28b86cb0065c6765
+Hash: a4daac2a805d33ddf175a2e0ec6f3048bdd472a7
 ```
