@@ -1,7 +1,7 @@
-#[path = "pb/antelope.atomicmarketsales.v1.rs"]
+#[path = "pb/antelope.atomicmarket.v1.rs"]
 #[allow(dead_code)]
-pub mod atomicmarketsales;
-pub use self::atomicmarketsales::*;
+pub mod atomicmarket;
+pub use self::atomicmarket::*;
 
 mod abi;
 mod maps;

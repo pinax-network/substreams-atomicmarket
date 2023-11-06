@@ -7,7 +7,7 @@ use substreams_entity_change::{tables::Tables, pb::entity::EntityChanges};
 use substreams_database_change::pb::database::{table_change::Operation, DatabaseChanges};
 
 
-use crate::atomicmarketsales::*;
+use crate::atomicmarket::*;
 
 #[substreams::handlers::map]
 fn prom_out(events: AssertSaleEvents) -> Result<PrometheusOperations, Error> {
