@@ -6,7 +6,7 @@ use crate::abi;
 use crate::atomicmarket::*;
 
 #[substreams::handlers::map]
-fn map_sales(block: Block) -> Result<AssertSaleEvents, Error> {
+fn map_events(block: Block) -> Result<AnyEvents, Error> {
     let mut response = vec![];
 
     for trx in block.all_transaction_traces() {
@@ -27,29 +27,24 @@ fn map_sales(block: Block) -> Result<AssertSaleEvents, Error> {
             if associated_trace.action.as_ref().unwrap().name == "cancelsale" {continue}
             match abi::SalesS::try_from(db_op.old_data_json.as_str()) {
                 Ok(data) => {
-                    response.push(AssertSale {
-                        trx_id: trx.id.clone(),
-                        sale_id: data.sale_id,
-                        asset_ids: data.asset_ids,
-                        listing_price: data.listing_price,
-                        collection_name: data.collection_name,
-                    });
+                    response.push(AnyEvent {
+                        event: Some(any_event::Event::Assertsaleitem(
+                            AssertSale {
+                                trx_id: trx.id.clone(),
+                                sale_id: data.sale_id,
+                                asset_ids: data.asset_ids,
+                                listing_price: data.listing_price,
+                                collection_name: data.collection_name,
+                            }))
+                        });
                 },
                 Err(error) => {
                     log::debug!("old data not decoded: {}", error);
                     continue;
                 }
             };
-        }
-    }
-    Ok(AssertSaleEvents { items: response })
-}
+        }        
 
-#[substreams::handlers::map]
-fn map_events(block: Block) -> Result<AnyEvents, Error> {
-    let mut response = vec![];
-
-    for trx in block.all_transaction_traces() {
         // action traces
         for trace in &trx.action_traces {
             let action_trace = trace.action.as_ref().unwrap();
@@ -59,7 +54,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
             if action_trace.name == "announcesale" {
                 match abi::Announcesale::try_from(action_trace.json_data.as_str()) {
                     Ok(data) => {
-                        if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
+                        //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
                             event: Some(any_event::Event::Saleitem(
                                 SaleEvent {
@@ -85,7 +80,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
             if action_trace.name == "announceauct" {
                 match abi::Announceauct::try_from(action_trace.json_data.as_str()) {
                     Ok(data) => {
-                        if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
+                        //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
                             event: Some(any_event::Event::Auctionitem(
                                 AuctionEvent {
@@ -111,7 +106,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
             if action_trace.name == "lognewbuyo" {
                 match abi::Lognewbuyo::try_from(action_trace.json_data.as_str()) {
                     Ok(data) => {
-                        if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
+                        //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
                             event: Some(any_event::Event::Newbuyoitem(
                                 NewBuyo {

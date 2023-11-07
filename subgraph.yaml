@@ -11,7 +11,7 @@ dataSources:
     source:
       package:
         moduleName: graph_out
-        file: ./atomicmarket-v0.2.3.spkg
+        file: ./atomicmarket-v0.3.0.spkg
     mapping:
       kind: substreams/graph-entities
       apiVersion: 0.0.7

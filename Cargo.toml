@@ -1,6 +1,6 @@
 [package]
 name = "atomicmarket"
-version = "0.3.0-dev"
+version = "0.3.0"
 authors = ["Paul <paulm@pinax.network>"]
 description = "Substreams for AtomicMarket"
 edition = "2021"

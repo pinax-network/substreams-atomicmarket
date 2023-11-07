@@ -4,10 +4,6 @@ package antelope.atomicmarket.v1;
 
 import "google/protobuf/any.proto"; // Import Any type
 
-message AssertSaleEvents {
-  repeated AssertSale items = 1;
-}
-
 // Assertsale
 message AssertSale {
   // trace information
@@ -31,11 +27,8 @@ message AnyEvent {
     NewBuyo newbuyoitem = 3;
     PurchaseSale purchasesaleitem = 4;
     LogNewSale lognewsaleitem = 5;
+    AssertSale assertsaleitem = 6;
   }
-}
-
-message SaleEvents {
-  repeated SaleEvent items = 1;
 }
 
 message SaleEvent {
@@ -52,10 +45,6 @@ message SaleEvent {
   string listing_price = 7;
   string settlement_symbol = 8;
   string maker_marketplace = 9;
-}
-
-message AuctionEvents {
-  repeated AuctionEvent items = 1;
 }
 
 message AuctionEvent {
@@ -94,8 +83,6 @@ message NewBuyo {
   string collection_name = 11;
   string collection_fee = 12;
 }
-
-
 
 // Lognewsale
 message LogNewSale {

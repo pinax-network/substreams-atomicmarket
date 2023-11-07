@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/github/v/release/pinax-network/substreams-atomicmarket)
 ![License](https://img.shields.io/github/license/pinax-network/substreams-atomicmarket)
 
-> Sale ID, Transaction ID, Asset IDs, Listing price & Collection name
+> Sale events: Sale ID, Transaction ID, Asset IDs, Listing price & Collection name
 
 ## Quick Start
 
@@ -12,24 +12,21 @@
 gh repo clone pinax-network/substreams-atomicmarket
 cd substreams-atomicmarket
 make
-make gui        # runs the map_sales module for a block
+make gui        # runs the map_events module for a block
 ```
 
 ### Mermaid graph
 
 ```mermaid
 graph TD;
-  map_sales[map: map_sales];
-  sf.antelope.type.v1.Block[source: sf.antelope.type.v1.Block] --> map_sales;
   map_events[map: map_events];
   sf.antelope.type.v1.Block[source: sf.antelope.type.v1.Block] --> map_events;
   prom_out[map: prom_out];
-  map_sales --> prom_out;
+  map_events --> prom_out;
   graph_out[map: graph_out];
-  map_sales --> graph_out;
+  map_events --> graph_out;
   db_out[map: db_out];
-  map_sales --> db_out;
-
+  map_events --> db_out;
 ```
 ## Map Outputs
 
@@ -108,37 +105,31 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarket
-Version: v0.3.0-dev
+Version: v0.3.0
 Doc: Substreams for AtomicMarket
 Modules:
 ----
-Name: map_sales
-Initial block: 0
-Kind: map
-Output Type: proto:antelope.atomicmarket.v1.AssertSaleEvents
-Hash: fd3c6d65c11d3e88fb65ffbdf453380de7cd4e4e
-
 Name: map_events
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarket.v1.AnyEvents
-Hash: c0a6f7ee0ac71758e135d4d9728cf6605039da9f
+Hash: 5a5501f1620f3ae6025343497b917deae5044903
 
 Name: prom_out
 Initial block: 0
 Kind: map
 Output Type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
-Hash: 6cfba2b41b020b9698111397e36b659a47c62988
+Hash: 6feb9acab35c3b1b9ac7116535fffbb83d919200
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: a2910584ea4fa237c1e2242a311ab940a477b96e
+Hash: 8d94d569565710b3556de2d382adda44960ac2c9
 
 Name: db_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-Hash: 2edad62f2297c5dce48ebcdcee207741dbb13998
+Hash: b6eb6c8b7ec383c8d07ca4f71f8f09a8b9a1fc2f
 ```

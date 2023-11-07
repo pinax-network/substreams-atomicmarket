@@ -1,10 +1,4 @@
 // @generated
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AssertSaleEvents {
-    #[prost(message, repeated, tag="1")]
-    pub items: ::prost::alloc::vec::Vec<AssertSale>,
-}
 /// Assertsale
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -31,7 +25,7 @@ pub struct AnyEvents {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AnyEvent {
-    #[prost(oneof="any_event::Event", tags="1, 2, 3, 4, 5")]
+    #[prost(oneof="any_event::Event", tags="1, 2, 3, 4, 5, 6")]
     pub event: ::core::option::Option<any_event::Event>,
 }
 /// Nested message and enum types in `AnyEvent`.
@@ -49,13 +43,9 @@ pub mod any_event {
         Purchasesaleitem(super::PurchaseSale),
         #[prost(message, tag="5")]
         Lognewsaleitem(super::LogNewSale),
+        #[prost(message, tag="6")]
+        Assertsaleitem(super::AssertSale),
     }
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SaleEvents {
-    #[prost(message, repeated, tag="1")]
-    pub items: ::prost::alloc::vec::Vec<SaleEvent>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -79,12 +69,6 @@ pub struct SaleEvent {
     pub settlement_symbol: ::prost::alloc::string::String,
     #[prost(string, tag="9")]
     pub maker_marketplace: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AuctionEvents {
-    #[prost(message, repeated, tag="1")]
-    pub items: ::prost::alloc::vec::Vec<AuctionEvent>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
