@@ -1,8 +1,9 @@
 specVersion: v0.1.0
 package:
-  name: "atomicmarketsales"
-  version: v0.2.3
-  url: https://github.com/pinax-network/substreams-atomicmarket-sales
+  name: "atomicmarket"
+  version: v0.3.0
+  url: https://github.com/pinax-network/substreams-atomicmarket
+  doc: Substreams for AtomicMarket
 
 imports:
   prom: https://github.com/pinax-network/substreams-sink-prometheus.rs/releases/download/v0.1.9/substreams-sink-prometheus-v0.1.9.spkg
@@ -12,27 +13,27 @@ imports:
 
 protobuf:
   files:
-    - atomicmarketsales.proto
+    - atomicmarket.proto
   importPaths:
     - ./proto/v1
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ./target/wasm32-unknown-unknown/release/atomicmarketsales.wasm
+    file: ./target/wasm32-unknown-unknown/release/atomicmarket.wasm
 
 modules:
-  - name: map_sales
+  - name: map_events
     kind: map
     inputs:
       - source: sf.antelope.type.v1.Block
     output:
-      type: proto:antelope.atomicmarketsales.v1.AssertSaleEvents
+      type: proto:antelope.atomicmarket.v1.AnyEvents
 
   - name: prom_out
     kind: map
     inputs:
-      - map: map_sales
+      - map: map_events
     output:
       type: proto:pinax.substreams.sink.prometheus.v1.PrometheusOperations
 
@@ -41,7 +42,7 @@ modules:
     kind: map
     inputs:
       #- source: sf.substreams.v1.Clock
-      - map: map_sales
+      - map: map_events
     output:
       type: proto:sf.substreams.sink.entity.v1.EntityChanges
 
@@ -49,7 +50,7 @@ modules:
     kind: map
     inputs:
       #- source: sf.substreams.v1.Clock
-      - map: map_sales
+      - map: map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
 
