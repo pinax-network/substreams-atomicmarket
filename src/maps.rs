@@ -10,7 +10,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
     let mut response = vec![];
 
     for trx in block.all_transaction_traces() {
-        // db_ops
+        // db_ops for asserted sales
         for db_op in &trx.db_ops {
             if db_op.table_name != "sales" {continue}
             if db_op.operation != 3 {continue}

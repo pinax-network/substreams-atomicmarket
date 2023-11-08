@@ -6,7 +6,6 @@ CREATE TABLE Sales
     listing_price_amount  Int64,
     listing_price_precision  UInt8,
     listing_price_symcode    String,
-    listing_price_value      Decimal32(4),
     collection_name String,
 )
 ENGINE = ReplacingMergeTree

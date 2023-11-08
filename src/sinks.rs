@@ -52,10 +52,8 @@ fn prom_out(anyevents: AnyEvents) -> Result<PrometheusOperations, Error> {
 }
 
 #[substreams::handlers::map]
-// Timestamp is ignored for Clickhouse since it is automatically generated
-fn graph_out(/*clock: Clock,*/ anyevents: AnyEvents) -> Result<EntityChanges, Error> {
+fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
     let mut tables = Tables::new();
-    /*let timestamp = clock.timestamp.unwrap().seconds.to_string();*/
 
     for anyevent in anyevents.items {
         match anyevent.event {
@@ -69,12 +67,10 @@ fn graph_out(/*clock: Clock,*/ anyevents: AnyEvents) -> Result<EntityChanges, Er
                     .create_row("Sales", sale_id)
                     .set_bigint("sale_id", sale_id)
                     .set("trx_id", &event.trx_id)
-                    //.set("timestamp", &timestamp)
                     .set("asset_ids", asset_ids)
                     .set("listing_price_amount", asset.amount)
                     .set("listing_price_precision", asset.symbol.precision())
                     .set("listing_price_symcode", &asset.symbol.code().to_string())
-                    .set("listing_price_value", asset.value().to_string())
                     .set("collection_name", &event.collection_name);
             },
             _ => {continue}
@@ -84,9 +80,7 @@ fn graph_out(/*clock: Clock,*/ anyevents: AnyEvents) -> Result<EntityChanges, Er
 }
 
 #[substreams::handlers::map]
-// Timestamp is ignored for Clickhouse since it is automatically generated
-pub fn db_out(/*clock: Clock,*/ anyevents: AnyEvents) -> Result<DatabaseChanges, Error> {
-    // let timestamp = clock.timestamp.unwrap().to_string();
+pub fn db_out(anyevents: AnyEvents) -> Result<DatabaseChanges, Error> {
     let mut database_changes: DatabaseChanges = Default::default();
   
     for anyevent in anyevents.items {
@@ -105,11 +99,8 @@ pub fn db_out(/*clock: Clock,*/ anyevents: AnyEvents) -> Result<DatabaseChanges,
                 .change("sale_id", (None, sale_id))
                 .change("trx_id", (None, event.trx_id))
 
-                // not needed for clickhouse
-                //.change("timestamp", (None, timestamp.clone()))
                 .change("asset_ids", (None, asset_ids))
 
-                .change("listing_price_value", (None, asset.value().to_string()))
                 .change("listing_price_amount", (None, asset.amount))
                 .change("listing_price_precision", (None, asset.symbol.precision()))
                 .change("listing_price_symcode", (None, asset.symbol.code().to_string()))
