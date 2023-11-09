@@ -56,11 +56,9 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Saleitem(
-                                SaleEvent {
+                            event: Some(any_event::Event::Announcesaleitem(
+                                AnnounceSale {
                                 trx_id: trx.id.clone(),
-                                timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
-                                event: action_trace.name.clone(),
                                 seller: data.seller,
                                 asset_ids: data.asset_ids,
                                 listing_price: data.listing_price,
@@ -82,11 +80,9 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Auctionitem(
-                                AuctionEvent {
+                            event: Some(any_event::Event::Announceauctionitem(
+                                AnnounceAuction {
                                 trx_id: trx.id.clone(),
-                                timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
-                                event: action_trace.name.clone(),
                                 seller: data.seller,
                                 asset_ids: data.asset_ids,
                                 starting_bid: data.starting_bid,
@@ -108,11 +104,9 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Newbuyoitem(
-                                NewBuyo {
+                            event: Some(any_event::Event::Lognewbuyoitem(
+                                LogNewBuyo {
                                 trx_id: trx.id.clone(),
-                                timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
-                                event: action_trace.name.clone(),
                                 buyoffer_id: data.buyoffer_id,
                                 buyer: data.buyer,
                                 recipient: data.recipient,
@@ -142,8 +136,6 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                             event: Some(any_event::Event::Purchasesaleitem(
                                 PurchaseSale {
                                 trx_id: trx.id.clone(),
-                                timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
-                                event: action_trace.name.clone(),
                                 buyer: data.buyer,
                                 sale_id: data.sale_id,
                                 intended_delphi_median: data.intended_delphi_median,
@@ -168,8 +160,6 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                             event: Some(any_event::Event::Lognewsaleitem(
                                 LogNewSale {
                                 trx_id: trx.id.clone(),
-                                timestamp: block.header.as_ref().unwrap().timestamp.as_ref().unwrap().to_string(),
-                                event: action_trace.name.clone(),
                                 sale_id: data.sale_id,
                                 seller: data.seller,
                                 asset_ids: data.asset_ids,

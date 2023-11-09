@@ -73,6 +73,84 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("listing_price_symcode", &asset.symbol.code().to_string())
                     .set("collection_name", &event.collection_name);
             },
+            Some(any_event::Event::Announcesaleitem(event)) => {
+                let trx_id = &event.trx_id;
+                let asset = Asset::from(event.listing_price.as_str());
+        
+                // convert Vec<u64> to Vec<String>
+                let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
+                tables
+                    .create_row("Announcesales", trx_id)
+                    .set("trx_id", &event.trx_id)
+                    .set("asset_ids", asset_ids)
+                    .set("seller", &event.seller)
+                    .set("listing_price_amount", asset.amount)
+                    .set("listing_price_precision", asset.symbol.precision())
+                    .set("listing_price_symcode", &asset.symbol.code().to_string())
+                    .set("maker_marketplace", &event.maker_marketplace);
+            },
+            Some(any_event::Event::Announceauctionitem(event)) => {
+                let trx_id = &event.trx_id;
+        
+                // convert Vec<u64> to Vec<String>
+                let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
+                tables
+                    .create_row("Auctions", trx_id)
+                    .set("trx_id", &event.trx_id)
+                    .set("seller", &event.seller)
+                    .set("asset_ids", asset_ids)
+                    .set("starting_bid", &event.starting_bid)
+                    .set("duration", event.duration)
+                    .set("maker_marketplace", &event.maker_marketplace);
+            },
+            Some(any_event::Event::Lognewbuyoitem(event)) => {
+                let buyoffer_id = &event.buyoffer_id.to_string();
+        
+                // convert Vec<u64> to Vec<String>
+                let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
+                tables
+                    .create_row("Newbuyos", buyoffer_id)
+                    .set("buyoffer_id", buyoffer_id)
+                    .set("trx_id", &event.trx_id)
+                    .set("buyer", &event.buyer)
+                    .set("recipient", &event.recipient)
+                    .set("price", &event.price)
+                    .set("asset_ids", asset_ids)
+                    .set("memo", &event.memo)
+                    .set("maker_marketplace", &event.maker_marketplace)
+                    .set("collection_name", &event.collection_name)
+                    .set("collection_fee", &event.collection_fee);
+            },
+            Some(any_event::Event::Lognewsaleitem(event)) => {
+                let sale_id = &event.sale_id.to_string();
+                let asset = Asset::from(event.listing_price.as_str());
+        
+                // convert Vec<u64> to Vec<String>
+                let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
+                tables
+                    .create_row("Lognewsales", sale_id)
+                    .set("sale_id", sale_id)
+                    .set("trx_id", &event.trx_id)
+                    .set("seller", &event.seller)
+                    .set("asset_ids", asset_ids)
+                    .set("listing_price_amount", asset.amount)
+                    .set("listing_price_precision", asset.symbol.precision())
+                    .set("listing_price_symcode", &asset.symbol.code().to_string())
+                    .set("maker_marketplace", &event.maker_marketplace)
+                    .set("collection_name", &event.collection_name)
+                    .set("collection_fee", &event.collection_fee);
+            },
+            Some(any_event::Event::Purchasesaleitem(event)) => {
+                let sale_id = &event.sale_id.to_string();
+        
+                tables
+                    .create_row("Purchasesales", sale_id)
+                    .set("sale_id", sale_id)
+                    .set("trx_id", &event.trx_id)
+                    .set("buyer", &event.buyer)
+                    .set("intended_delphi_median", event.intended_delphi_median)
+                    .set("taker_marketplace", &event.taker_marketplace);
+            },
             _ => {continue}
         }
     }
