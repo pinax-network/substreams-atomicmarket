@@ -4,6 +4,21 @@ package antelope.atomicmarket.v1;
 
 import "google/protobuf/any.proto"; // Import Any type
 
+message AnyEvents {
+  repeated AnyEvent items = 1;
+}
+
+message AnyEvent {
+  oneof event {
+    AnnounceSale announcesaleitem = 1;
+    AnnounceAuction announceauctionitem = 2;
+    LogNewBuyo lognewbuyoitem = 3;
+    PurchaseSale purchasesaleitem = 4;
+    LogNewSale lognewsaleitem = 5;
+    AssertSale assertsaleitem = 6;
+  }
+}
+
 // Assertsale
 message AssertSale {
   // trace information
@@ -16,28 +31,9 @@ message AssertSale {
   string collection_name = 8;
 }
 
-message AnyEvents {
-  repeated AnyEvent items = 1;
-}
-
-message AnyEvent {
-  oneof event {
-    SaleEvent saleitem = 1;
-    AuctionEvent auctionitem = 2;
-    NewBuyo newbuyoitem = 3;
-    PurchaseSale purchasesaleitem = 4;
-    LogNewSale lognewsaleitem = 5;
-    AssertSale assertsaleitem = 6;
-  }
-}
-
-message SaleEvent {
+message AnnounceSale {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
-
-  // event type
-  string event = 3;
 
   //payload
   string seller = 5;
@@ -47,13 +43,9 @@ message SaleEvent {
   string maker_marketplace = 9;
 }
 
-message AuctionEvent {
+message AnnounceAuction {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
-
-  // event type
-  string event = 3;
 
   //payload
   string seller = 5;
@@ -63,14 +55,9 @@ message AuctionEvent {
   string maker_marketplace = 9;
 }
 
-// Lognewbuyo
-message NewBuyo {
+message LogNewBuyo {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
-
-  // event type
-  string event = 3;
 
   //payload
   uint64 buyoffer_id = 4;
@@ -84,14 +71,9 @@ message NewBuyo {
   string collection_fee = 12;
 }
 
-// Lognewsale
 message LogNewSale {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
-
-  // event type
-  string event = 3;
 
   //payload
   uint64 sale_id = 4;
@@ -104,14 +86,9 @@ message LogNewSale {
   string collection_fee = 11;
 }
 
-// Purchasesale
 message PurchaseSale {
   // trace information
   string trx_id = 1;
-  string timestamp = 2;
-
-  // event type
-  string event = 3;
 
   //payload
   string buyer = 4;
