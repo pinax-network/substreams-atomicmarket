@@ -30,7 +30,7 @@ graph TD;
 {
   "items": [
     {
-      "assertsaleitem": {
+      "assertSale": {
         "trxId": "b70bfe7ddea07a0be32991684fff17d6d74825e905b785e43be236845779f318",
         "saleId": "2319916",
         "assetIds": ["2199025081834"],
@@ -39,7 +39,7 @@ graph TD;
       }
     },
     {
-      "purchasesaleitem": {
+      "purchaseSale": {
         "trxId": "b70bfe7ddea07a0be32991684fff17d6d74825e905b785e43be236845779f318",
         "buyer": "knottsy1.ftw",
         "saleId": "2319916"
@@ -53,7 +53,7 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarket
-Version: v0.3.0
+Version: v0.3.1
 Doc: Substreams for AtomicMarket
 Modules:
 ----

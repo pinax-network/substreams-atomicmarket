@@ -1,6 +1,6 @@
 use substreams::log;
 use substreams::errors::Error;
-use substreams_antelope::Block;
+use substreams_antelope::pb::Block;
 
 use crate::abi;
 use crate::atomicmarket::*;
@@ -25,10 +25,11 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
             }
             // If the action that triggered the db_op was a cancelsale, skip it
             if associated_trace.action.as_ref().unwrap().name == "cancelsale" {continue}
+
             match abi::SalesS::try_from(db_op.old_data_json.as_str()) {
                 Ok(data) => {
                     response.push(AnyEvent {
-                        event: Some(any_event::Event::Assertsaleitem(
+                        event: Some(any_event::Event::AssertSale(
                             AssertSale {
                                 trx_id: trx.id.clone(),
                                 sale_id: data.sale_id,
@@ -56,14 +57,14 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Announcesaleitem(
+                            event: Some(any_event::Event::AnnounceSale(
                                 AnnounceSale {
-                                trx_id: trx.id.clone(),
-                                seller: data.seller,
-                                asset_ids: data.asset_ids,
-                                listing_price: data.listing_price,
-                                settlement_symbol: data.settlement_symbol,
-                                maker_marketplace: data.maker_marketplace,
+                                    trx_id: trx.id.clone(),
+                                    seller: data.seller,
+                                    asset_ids: data.asset_ids,
+                                    listing_price: data.listing_price,
+                                    settlement_symbol: data.settlement_symbol,
+                                    maker_marketplace: data.maker_marketplace,
                                 }
                             ))
                         });
@@ -80,14 +81,14 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Announceauctionitem(
+                            event: Some(any_event::Event::AnnonceAuction(
                                 AnnounceAuction {
-                                trx_id: trx.id.clone(),
-                                seller: data.seller,
-                                asset_ids: data.asset_ids,
-                                starting_bid: data.starting_bid,
-                                duration: data.duration,
-                                maker_marketplace: data.maker_marketplace,
+                                    trx_id: trx.id.clone(),
+                                    seller: data.seller,
+                                    asset_ids: data.asset_ids,
+                                    starting_bid: data.starting_bid,
+                                    duration: data.duration,
+                                    maker_marketplace: data.maker_marketplace,
                                 }
                             ))
                         });
@@ -104,18 +105,18 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Lognewbuyoitem(
-                                LogNewBuyo {
-                                trx_id: trx.id.clone(),
-                                buyoffer_id: data.buyoffer_id,
-                                buyer: data.buyer,
-                                recipient: data.recipient,
-                                price: data.price,
-                                asset_ids: data.asset_ids,
-                                memo: data.memo,
-                                maker_marketplace: data.maker_marketplace,
-                                collection_name: data.collection_name,
-                                collection_fee: data.collection_fee,
+                            event: Some(any_event::Event::NewBuyOrder(
+                                NewBuyOrder {
+                                    trx_id: trx.id.clone(),
+                                    buyoffer_id: data.buyoffer_id,
+                                    buyer: data.buyer,
+                                    recipient: data.recipient,
+                                    price: data.price,
+                                    asset_ids: data.asset_ids,
+                                    memo: data.memo,
+                                    maker_marketplace: data.maker_marketplace,
+                                    collection_name: data.collection_name,
+                                    collection_fee: data.collection_fee,
                                 }
                             ))
                         });
@@ -133,13 +134,13 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.taker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Purchasesaleitem(
+                            event: Some(any_event::Event::PurchaseSale(
                                 PurchaseSale {
-                                trx_id: trx.id.clone(),
-                                buyer: data.buyer,
-                                sale_id: data.sale_id,
-                                intended_delphi_median: data.intended_delphi_median,
-                                taker_marketplace: data.taker_marketplace,
+                                    trx_id: trx.id.clone(),
+                                    buyer: data.buyer,
+                                    sale_id: data.sale_id,
+                                    intended_delphi_median: data.intended_delphi_median,
+                                    taker_marketplace: data.taker_marketplace,
                                 }
                             ))
                         });
@@ -157,17 +158,17 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::Lognewsaleitem(
-                                LogNewSale {
-                                trx_id: trx.id.clone(),
-                                sale_id: data.sale_id,
-                                seller: data.seller,
-                                asset_ids: data.asset_ids,
-                                listing_price: data.listing_price,
-                                settlement_symbol: data.settlement_symbol,
-                                maker_marketplace: data.maker_marketplace,
-                                collection_name: data.collection_name,
-                                collection_fee: data.collection_fee,
+                            event: Some(any_event::Event::NewSale(
+                                NewSale {
+                                    trx_id: trx.id.clone(),
+                                    sale_id: data.sale_id,
+                                    seller: data.seller,
+                                    asset_ids: data.asset_ids,
+                                    listing_price: data.listing_price,
+                                    settlement_symbol: data.settlement_symbol,
+                                    maker_marketplace: data.maker_marketplace,
+                                    collection_name: data.collection_name,
+                                    collection_fee: data.collection_fee,
                                 }
                             ))
                         });

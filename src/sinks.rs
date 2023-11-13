@@ -10,7 +10,7 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
 
     for anyevent in anyevents.items {
         match anyevent.event {
-            Some(any_event::Event::Assertsaleitem(event)) => {
+            Some(any_event::Event::AssertSale(event)) => {
                 let sale_id = &event.sale_id.to_string();
                 let asset = Asset::from(event.listing_price.as_str());
 
@@ -26,14 +26,14 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("listing_price_symcode", &asset.symbol.code().to_string())
                     .set("collection_name", &event.collection_name);
             },
-            Some(any_event::Event::Announcesaleitem(event)) => {
+            Some(any_event::Event::AnnounceSale(event)) => {
                 let trx_id = &event.trx_id;
                 let asset = Asset::from(event.listing_price.as_str());
 
                 // convert Vec<u64> to Vec<String>
                 let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
                 tables
-                    .create_row("Announcesales", trx_id)
+                    .create_row("AnnounceSales", trx_id)
                     .set("trx_id", &event.trx_id)
                     .set("asset_ids", asset_ids)
                     .set("seller", &event.seller)
@@ -42,13 +42,13 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("listing_price_symcode", &asset.symbol.code().to_string())
                     .set("maker_marketplace", &event.maker_marketplace);
             },
-            Some(any_event::Event::Announceauctionitem(event)) => {
+            Some(any_event::Event::AnnonceAuction(event)) => {
                 let trx_id = &event.trx_id;
 
                 // convert Vec<u64> to Vec<String>
                 let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
                 tables
-                    .create_row("Auctions", trx_id)
+                    .create_row("AnnounceAuctions", trx_id)
                     .set("trx_id", &event.trx_id)
                     .set("seller", &event.seller)
                     .set("asset_ids", asset_ids)
@@ -56,13 +56,13 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("duration", event.duration)
                     .set("maker_marketplace", &event.maker_marketplace);
             },
-            Some(any_event::Event::Lognewbuyoitem(event)) => {
+            Some(any_event::Event::NewBuyOrder(event)) => {
                 let buyoffer_id = &event.buyoffer_id.to_string();
 
                 // convert Vec<u64> to Vec<String>
                 let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
                 tables
-                    .create_row("Newbuyos", buyoffer_id)
+                    .create_row("NewBuyOrders", buyoffer_id)
                     .set("buyoffer_id", buyoffer_id)
                     .set("trx_id", &event.trx_id)
                     .set("buyer", &event.buyer)
@@ -74,14 +74,14 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("collection_name", &event.collection_name)
                     .set("collection_fee", &event.collection_fee);
             },
-            Some(any_event::Event::Lognewsaleitem(event)) => {
+            Some(any_event::Event::NewSale(event)) => {
                 let sale_id = &event.sale_id.to_string();
                 let asset = Asset::from(event.listing_price.as_str());
 
                 // convert Vec<u64> to Vec<String>
                 let asset_ids: Vec<String> = event.asset_ids.iter().map(|x| x.to_string()).collect();
                 tables
-                    .create_row("Lognewsales", sale_id)
+                    .create_row("NewSales", sale_id)
                     .set("sale_id", sale_id)
                     .set("trx_id", &event.trx_id)
                     .set("seller", &event.seller)
@@ -93,11 +93,11 @@ fn graph_out(anyevents: AnyEvents) -> Result<EntityChanges, Error> {
                     .set("collection_name", &event.collection_name)
                     .set("collection_fee", &event.collection_fee);
             },
-            Some(any_event::Event::Purchasesaleitem(event)) => {
+            Some(any_event::Event::PurchaseSale(event)) => {
                 let sale_id = &event.sale_id.to_string();
 
                 tables
-                    .create_row("Purchasesales", sale_id)
+                    .create_row("PurchaseSales", sale_id)
                     .set("sale_id", sale_id)
                     .set("trx_id", &event.trx_id)
                     .set("buyer", &event.buyer)

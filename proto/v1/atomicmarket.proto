@@ -10,12 +10,12 @@ message AnyEvents {
 
 message AnyEvent {
   oneof event {
-    AnnounceSale announcesaleitem = 1;
-    AnnounceAuction announceauctionitem = 2;
-    LogNewBuyo lognewbuyoitem = 3;
-    PurchaseSale purchasesaleitem = 4;
-    LogNewSale lognewsaleitem = 5;
-    AssertSale assertsaleitem = 6;
+    AnnounceSale announce_sale = 1;
+    AnnounceAuction annonce_auction = 2;
+    NewBuyOrder new_buy_order = 3;
+    PurchaseSale purchase_sale = 4;
+    NewSale new_sale = 5;
+    AssertSale assert_sale = 6;
   }
 }
 
@@ -55,7 +55,7 @@ message AnnounceAuction {
   string maker_marketplace = 9;
 }
 
-message LogNewBuyo {
+message NewBuyOrder {
   // trace information
   string trx_id = 1;
 
@@ -71,7 +71,7 @@ message LogNewBuyo {
   string collection_fee = 12;
 }
 
-message LogNewSale {
+message NewSale {
   // trace information
   string trx_id = 1;
 

@@ -17,17 +17,17 @@ pub mod any_event {
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Event {
         #[prost(message, tag="1")]
-        Announcesaleitem(super::AnnounceSale),
+        AnnounceSale(super::AnnounceSale),
         #[prost(message, tag="2")]
-        Announceauctionitem(super::AnnounceAuction),
+        AnnonceAuction(super::AnnounceAuction),
         #[prost(message, tag="3")]
-        Lognewbuyoitem(super::LogNewBuyo),
+        NewBuyOrder(super::NewBuyOrder),
         #[prost(message, tag="4")]
-        Purchasesaleitem(super::PurchaseSale),
+        PurchaseSale(super::PurchaseSale),
         #[prost(message, tag="5")]
-        Lognewsaleitem(super::LogNewSale),
+        NewSale(super::NewSale),
         #[prost(message, tag="6")]
-        Assertsaleitem(super::AssertSale),
+        AssertSale(super::AssertSale),
     }
 }
 /// Assertsale
@@ -85,7 +85,7 @@ pub struct AnnounceAuction {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct LogNewBuyo {
+pub struct NewBuyOrder {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,
@@ -111,7 +111,7 @@ pub struct LogNewBuyo {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct LogNewSale {
+pub struct NewSale {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,
