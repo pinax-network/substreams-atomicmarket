@@ -33,17 +33,9 @@ run: build
 gui: build
 	substreams gui -e eos.substreams.pinax.network:443 map_events -s 323511941 -t +1
 
-.PHONY: prometheus
-prometheus: build
-	substreams run -e eos.substreams.pinax.network:443 substreams.yaml prom_out -s 323511941 -t +1
-
 .PHONY: graph_out
 graph_out: build
 	substreams run -e eos.substreams.pinax.network:443 substreams.yaml graph_out -s 323511941 -t +1
-
-.PHONY: db_out
-db_out: build
-	substreams run -e eos.substreams.pinax.network:443 substreams.yaml db_out -s 323511941 -t +1
 
 .PHONY: sink
 sink: build

@@ -14,7 +14,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
         for db_op in &trx.db_ops {
             if db_op.table_name != "sales" {continue}
             if db_op.operation != 3 {continue}
-            
+
             // Retrieve the trace associated with the db_op
             let mut associated_trace = &trx.action_traces[0];
             for trace in &trx.action_traces{
@@ -43,7 +43,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     continue;
                 }
             };
-        }        
+        }
 
         // action traces
         for trace in &trx.action_traces {
@@ -126,7 +126,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     }
                 }
             }
-            
+
             // Purchasesale event
             if action_trace.name == "purchasesale" {
                 match abi::Purchasesale::try_from(action_trace.json_data.as_str()) {
@@ -150,7 +150,7 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     }
                 }
             }
-            
+
             // Lognewsale event
             if action_trace.name == "lognewsale" {
                 match abi::Lognewsale::try_from(action_trace.json_data.as_str()) {
