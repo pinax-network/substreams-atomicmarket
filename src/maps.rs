@@ -33,9 +33,14 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                             AssertSale {
                                 trx_id: trx.id.clone(),
                                 sale_id: data.sale_id,
+                                seller: data.seller,
                                 asset_ids: data.asset_ids,
+                                offer_id: data.offer_id,
                                 listing_price: data.listing_price,
+                                settlement_symbol: data.settlement_symbol,
+                                maker_marketplace: data.maker_marketplace,
                                 collection_name: data.collection_name,
+                                collection_fee: data.collection_fee,
                             }))
                         });
                 },
@@ -105,8 +110,8 @@ fn map_events(block: Block) -> Result<AnyEvents, Error> {
                     Ok(data) => {
                         //if !["nft.hive", "market.nefty", "chainchampss"].contains(&data.maker_marketplace.as_str()) {continue}
                         response.push(AnyEvent{
-                            event: Some(any_event::Event::NewBuyOrder(
-                                NewBuyOrder {
+                            event: Some(any_event::Event::NewBuyOffer(
+                                NewBuyOffer {
                                     trx_id: trx.id.clone(),
                                     buyoffer_id: data.buyoffer_id,
                                     buyer: data.buyer,

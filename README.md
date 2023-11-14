@@ -33,9 +33,13 @@ graph TD;
       "assertSale": {
         "trxId": "b70bfe7ddea07a0be32991684fff17d6d74825e905b785e43be236845779f318",
         "saleId": "2319916",
+        "seller": "ghaterruuwwu",
         "assetIds": ["2199025081834"],
+        "offerId": "2324267",
         "listingPrice": "0.2079 EOS",
-        "collectionName": "chessunivers"
+        "settlementSymbol": "4,EOS",
+        "collectionName": "chessunivers",
+        "collectionFee": "0.08000000000000000"
       }
     },
     {
