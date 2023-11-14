@@ -21,7 +21,7 @@ pub mod any_event {
         #[prost(message, tag="2")]
         AnnonceAuction(super::AnnounceAuction),
         #[prost(message, tag="3")]
-        NewBuyOrder(super::NewBuyOrder),
+        NewBuyOffer(super::NewBuyOffer),
         #[prost(message, tag="4")]
         PurchaseSale(super::PurchaseSale),
         #[prost(message, tag="5")]
@@ -40,12 +40,22 @@ pub struct AssertSale {
     /// payload
     #[prost(uint64, tag="4")]
     pub sale_id: u64,
-    #[prost(uint64, repeated, tag="5")]
+    #[prost(string, tag="5")]
+    pub seller: ::prost::alloc::string::String,
+    #[prost(uint64, repeated, tag="6")]
     pub asset_ids: ::prost::alloc::vec::Vec<u64>,
-    #[prost(string, tag="6")]
-    pub listing_price: ::prost::alloc::string::String,
+    #[prost(int64, tag="7")]
+    pub offer_id: i64,
     #[prost(string, tag="8")]
+    pub listing_price: ::prost::alloc::string::String,
+    #[prost(string, tag="9")]
+    pub settlement_symbol: ::prost::alloc::string::String,
+    #[prost(string, tag="10")]
+    pub maker_marketplace: ::prost::alloc::string::String,
+    #[prost(string, tag="11")]
     pub collection_name: ::prost::alloc::string::String,
+    #[prost(string, tag="12")]
+    pub collection_fee: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -85,7 +95,7 @@ pub struct AnnounceAuction {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct NewBuyOrder {
+pub struct NewBuyOffer {
     /// trace information
     #[prost(string, tag="1")]
     pub trx_id: ::prost::alloc::string::String,

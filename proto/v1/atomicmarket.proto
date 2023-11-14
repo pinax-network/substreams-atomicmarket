@@ -12,7 +12,7 @@ message AnyEvent {
   oneof event {
     AnnounceSale announce_sale = 1;
     AnnounceAuction annonce_auction = 2;
-    NewBuyOrder new_buy_order = 3;
+    NewBuyOffer new_buy_offer = 3;
     PurchaseSale purchase_sale = 4;
     NewSale new_sale = 5;
     AssertSale assert_sale = 6;
@@ -26,9 +26,14 @@ message AssertSale {
 
   //payload
   uint64 sale_id = 4;
-  repeated uint64 asset_ids = 5;
-  string listing_price = 6;
-  string collection_name = 8;
+  string seller = 5;
+  repeated uint64 asset_ids = 6;
+  int64 offer_id = 7;
+  string listing_price = 8;
+  string settlement_symbol = 9;
+  string maker_marketplace = 10;
+  string collection_name = 11;
+  string collection_fee = 12;
 }
 
 message AnnounceSale {
@@ -55,7 +60,7 @@ message AnnounceAuction {
   string maker_marketplace = 9;
 }
 
-message NewBuyOrder {
+message NewBuyOffer {
   // trace information
   string trx_id = 1;
 
