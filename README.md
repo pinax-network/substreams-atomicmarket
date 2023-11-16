@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/github/v/release/pinax-network/substreams-atomicmarket)
 ![License](https://img.shields.io/github/license/pinax-network/substreams-atomicmarket)
 
-> Sale events: Sale ID, Transaction ID, Asset IDs, Listing price & Collection name
+> Sales related events: AnnounceSale, AnnounceAuction, NewBuyOffer, PurchaseSale, NewSale, AssertSale
 
 ## Quick Start
 
@@ -57,7 +57,7 @@ graph TD;
 ### Modules
 ```yaml
 Package name: atomicmarket
-Version: v0.3.1
+Version: v0.3.2
 Doc: Substreams for AtomicMarket
 Modules:
 ----
@@ -65,11 +65,11 @@ Name: map_events
 Initial block: 0
 Kind: map
 Output Type: proto:antelope.atomicmarket.v1.AnyEvents
-Hash: 5a5501f1620f3ae6025343497b917deae5044903
+Hash: 07452073c9c51edc6996f620b39f266511505816
 
 Name: graph_out
 Initial block: 0
 Kind: map
 Output Type: proto:sf.substreams.sink.entity.v1.EntityChanges
-Hash: 8d94d569565710b3556de2d382adda44960ac2c9
+Hash: d2c0bcf1d4641dafb70c3ff43e73ce8fa1afff98
 ```
